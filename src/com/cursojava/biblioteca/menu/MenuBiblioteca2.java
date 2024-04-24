@@ -27,6 +27,12 @@ public class MenuBiblioteca2 {
 
 	public static final Integer opSalir = 10;
 
+	/**
+	 * Menu con las opciones que puede gestionar el bibliotecario
+	 * 
+	 * @param scan el Scanner
+	 * @return entero con la opcion seleccionada
+	 */
 	public static Integer mostrarMenu(Scanner scan) {
 		System.out.println("1 - Seleccionar documento por titulo.");
 		System.out.println("2 - Seleccionar documento por codigo.");
@@ -42,12 +48,20 @@ public class MenuBiblioteca2 {
 		return opcion;
 	}
 
+	/**
+	 * Gestion del menu, mostramos el menu mientras no se seleccione la opcion salir,
+	 * para cualquier gestion hay que seleccionar primero un documento
+	 * 
+	 * @param conn       la Conexion con bbdd
+	 * @param biblioteca la biblioteca a gestionar
+	 * @param scan       Scanner
+	 */
 	public static void menu(Connection conn, Biblioteca biblioteca, Scanner scan) {
 		Integer seleccionada = -1;
 		do {
 			seleccionada = mostrarMenu(scan);
 			switch (seleccionada) {
-			case 1: {
+			case 1: { // Seleccionar documento por titulo.
 				try {
 					seleccionarDocumentoPorTitulo(conn, biblioteca, scan);
 				} catch (SQLException e) {
@@ -55,32 +69,32 @@ public class MenuBiblioteca2 {
 				}
 				break;
 			}
-			case 2: {
+			case 2: { // Seleccionar documento por codigo.
 				selecciondarDocumentoPorCod(biblioteca, scan);
 				break;
 			}
-			case 3: {
+			case 3: { // Prestar documento.
 				prestarDocumento(biblioteca, scan);
 				break;
 			}
-			case 4: {
+			case 4: { // Devolver documento.
 				devolverDocumento(biblioteca, scan);
 				break;
 			}
-			case 5: {
+			case 5: { // Agregar nuevo usuario.
 				agregarNuevoUsuario(biblioteca, scan);
 				break;
 			}
-			case 6: {
+			case 6: { // Eliminar usuario.
 				eliminarUsuario(biblioteca, scan);
 				break;
 			}
-			case 7: {
+			case 7: { // Agregar Libro.
 				break;
 			}
-			case 8:
+			case 8: // Agregar Revista.
 				break;
-			case 9:
+			case 9: // Mostrar todos los prestamos.
 				break;
 			case 10:
 				break;
@@ -96,17 +110,17 @@ public class MenuBiblioteca2 {
 			throws SQLException {
 		List<Documento> documentosFiltrados = GestionBBDD.getDocumentosFiltrados(conn, scan);
 		Documento documento = null;
-		if(documentosFiltrados.size() >= 1) {
+		if (documentosFiltrados.size() >= 1) {
 			Integer seleccionado = 1;
-			if(documentosFiltrados.size() > 1) {
+			if (documentosFiltrados.size() > 1) {
 				System.out.println("Documentos encontrados : ");
 				for (int i = 0; i < documentosFiltrados.size(); i++) {
-					System.out.println((i+1) + " - " + documentosFiltrados.get(i));
+					System.out.println((i + 1) + " - " + documentosFiltrados.get(i));
 				}
 				String frase = "Seleccionar un documento de la lista del 1 al " + documentosFiltrados.size();
 				seleccionado = GestionNumeros.scanNumero(frase, scan);
 			}
-			documento = documentosFiltrados.get(seleccionado -1);
+			documento = documentosFiltrados.get(seleccionado - 1);
 			biblioteca.setDocumentoSeleccionado(documento);
 			System.out.println("Documento selecciondo: " + documento);
 		}
@@ -124,14 +138,13 @@ public class MenuBiblioteca2 {
 		biblioteca.getBibliotecario().prestaDocumentoActual(dni);
 		Documento seleccionado = biblioteca.getDocumentoSeleccionado();
 
-		//comprobar dni y buscar usuario, if(usuario != null) agregamos prestamo a la biblioteca
+		// comprobar dni y buscar usuario, if(usuario != null) agregamos prestamo a la
+		// biblioteca
 		/*
-		Prestamo prestamo = new Prestamo();
-		prestamo.setDocumento(seleccionado);
-		prestamo.setUsuarioPrestamo(usuario);
-		// Insertar prestamo en BBDD
-		biblioteca.agregarPrestamo(usuario, prestamo);
-		*/
+		 * Prestamo prestamo = new Prestamo(); prestamo.setDocumento(seleccionado);
+		 * prestamo.setUsuarioPrestamo(usuario); // Insertar prestamo en BBDD
+		 * biblioteca.agregarPrestamo(usuario, prestamo);
+		 */
 		System.out.println(String.format("Se ha prestado el documento: %s al usuario con dni: %s", seleccionado, dni));
 	}
 

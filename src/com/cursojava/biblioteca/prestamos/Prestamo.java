@@ -5,17 +5,32 @@ import java.time.LocalDateTime;
 import com.cursojava.biblioteca.documentos.Documento;
 import com.cursojava.biblioteca.usuarios.Persona;
 
+/**
+ * Prestamo de la biblioteca
+ * @author Wendel
+ *
+ */
 public class Prestamo {
 	
+	// Fecha en la que se hace entrega del prestamo
 	private LocalDateTime fechaPrestamo;
 	
+	// Fecha de devolucion del prestamo
 	private LocalDateTime fechaDevolucion;
 
+	// El documento a prestar
 	private Documento documento;
 	
+	// El usuario al que se le presta el documento
 	private Persona usuarioPrestamo;
 	
+	// Cantidad de dias que tiene el usuario antes de la devolucion,
+	// segun el tipo de usuario varia
 	private Integer diasPrestamo;
+
+	public Prestamo() {
+		super();
+	}
 
 	public LocalDateTime getFechaPrestamo() {
 		return fechaPrestamo;

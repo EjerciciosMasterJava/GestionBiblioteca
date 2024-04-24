@@ -11,6 +11,7 @@ public class Documento {
 	
 	private String titulo;
 	
+	// disponible = si el libro esta libre o ya esta prestado
 	Boolean disponible;
 	
 	private TipoDocumento tipoDocumento;

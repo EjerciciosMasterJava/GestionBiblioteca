@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class GestionNumeros {
 
+	/**
+	 * Leer por teclado un numero, en caso de error se notifica y pide volver a introducir un numero valido
+	 * @param frase la frase a mostrar
+	 * @param scan el Scanner
+	 * @return el numero leido
+	 */
 	public static Integer scanNumero(String frase, Scanner scan) {
 		Integer ret = -1;
 		Boolean error = true;

@@ -56,6 +56,12 @@ public class GestionBiblioteca {
 		return scan.nextLine();
 	}
 
+	/**
+	 * Comprueba si un usuario es de tipo OCASIONAL o tipo SOCIO
+	 * @param texto el tipo a comprobar
+	 * @param scan Scanner
+	 * @return el TipoUsuario
+	 */
 	public static TipoUsuario getTipoUsuario(String texto, Scanner scan) {
 		System.out.println(texto);
 		Integer opcion = scan.nextInt();
@@ -71,10 +77,22 @@ public class GestionBiblioteca {
 		}
 	}
 	
+	/**
+	 * Buscar en la biblioteca un usuario por su dni
+	 * @param biblioteca
+	 * @param dni
+	 * @return El usuario
+	 */
 	public static Persona getUsuarioPorDni(Biblioteca biblioteca, String dni) {
 		return biblioteca.getUsuarios().values().parallelStream().filter(user -> user.getDni().equalsIgnoreCase(dni)).findFirst().get();
 	}
 
+	/**
+	 * Crear un usuario
+	 * @param scan
+	 * @return el usuario creado
+	 * @throws Exception
+	 */
 	public static Persona nuevoUsuario(Scanner scan) throws Exception {
 		try {
 			String dni = mostrar("Introduce el dni", scan);

@@ -29,8 +29,6 @@ public class BibliotecaApp2 {
 
 			MenuBiblioteca2.menu(conn, biblioteca, scan);
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

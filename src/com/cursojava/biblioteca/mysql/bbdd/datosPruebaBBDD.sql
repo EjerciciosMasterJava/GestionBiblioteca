@@ -1,3 +1,5 @@
+-- Creacion de datos de prueba para la biblioteca
+
 -- biblioteca
 INSERT INTO biblioteca2.biblioteca (nombre) VALUES ('Biblioteca Viewnext.');
 

@@ -16,12 +16,16 @@ public class Biblioteca {
 	
 	private Bibliotecario bibliotecario;
 	
+	// Mapa con todos los usuarios de la biblioteca
 	private Map<String, Persona> usuarios;
 	
+	// Lista completa de los documentos de la biblioteca
 	private List<Documento> documentos;
 	
+	// Documento seleccionado actualmente, para cualquier gestion hay que seleccionar primero un documento
 	private Documento documentoSeleccionado;
 	
+	// Mapa con lista de prestamos para cada usuario
 	private Map<Persona, List<Prestamo>> prestamosBiblioteca;
 
 	public Biblioteca(String nombre) {
@@ -32,6 +36,7 @@ public class Biblioteca {
 		this.prestamosBiblioteca = new HashMap<Persona, List<Prestamo>>();
 	}
 	
+	// Asignar un nuevo prestamo a un usuario
 	public void agregarPrestamo(Persona usuario, Prestamo prestamo) {
 		List<Prestamo> prestamosUsuario = null;
 		try {
@@ -42,6 +47,7 @@ public class Biblioteca {
 		prestamosUsuario.add(prestamo);
 	}
 	
+	// Devolver un prestamo de un usuario
 	public void devolverPrestamo(Persona usuario, Prestamo prestamo) {
 		List<Prestamo> prestamosUsuario = null;
 		try {

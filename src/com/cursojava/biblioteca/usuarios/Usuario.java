@@ -11,9 +11,10 @@ import com.cursojava.biblioteca.utilidad.BibliotecaEnums.*;
 
 public class Usuario extends Persona{
 
-	private Integer limitePrestamos;
-
 	private Long idSocio;
+	
+	// Limite de documentos que podra tener el usuario
+	private Integer limitePrestamos;
 	
 	private TipoUsuario tipoUsuario;
 		
@@ -25,7 +26,6 @@ public class Usuario extends Persona{
 		this.idSocio = this.numUsuarios;
 	}
 	
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

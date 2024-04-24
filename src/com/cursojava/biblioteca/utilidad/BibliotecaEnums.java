@@ -2,6 +2,11 @@ package com.cursojava.biblioteca.utilidad;
 
 public class BibliotecaEnums {
 
+	/**
+	 * Plazos de devolucion en funcion del tipo de usuario
+	 * @author Wendel
+	 *
+	 */
 	public static enum Plazos {
 		
 		OCASIONAL(15), SOCIO(30);

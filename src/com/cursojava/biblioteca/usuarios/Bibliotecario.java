@@ -10,10 +10,17 @@ import com.cursojava.biblioteca.funciones.FuncionesBibliotecario;
 import com.cursojava.biblioteca.prestamos.InformePrestamo;
 import com.cursojava.biblioteca.prestamos.Prestamo;
 
+/**
+ * Bibliotecario que gestiona la biblioteca
+ * @author Wendel
+ *
+ */
 public class Bibliotecario extends Persona implements FuncionesBibliotecario{
 
+	// Num seguridad social
 	private String NSS;
 	
+	// La biblioteca que gestiona
 	Biblioteca biblioteca;
 	
 	public Bibliotecario(String dni, String nombre, String apellidos, String nSS) {
